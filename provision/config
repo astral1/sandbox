@@ -1,0 +1,4 @@
+# -*- mode: yaml -*-
+# vi: set ft=yaml :
+---
+file_client: local
