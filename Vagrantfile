@@ -6,6 +6,8 @@ API_VERSION = '2'
 
 Vagrant.configure(API_VERSION) do |config|
   config.vm.box = 'astral1/trusty64'
+ 
+  config.vm.synced_folder 'provision/states/', '/srv/salt/'
 
   config.vm.define :vbox1 do |v1|
     config.vm.network 'private_network', ip: '172.16.33.10'
@@ -21,8 +23,6 @@ Vagrant.configure(API_VERSION) do |config|
     salt.colorize = true
     salt.verbose = true
   end
-
-  # config.vm.synced_folder '../data', '/vagrant_data'
   config.vm.provider 'virtualbox' do |vb|
     vb.customize ['modifyvm', :id, '--memory', '1024']
   end
