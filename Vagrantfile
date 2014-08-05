@@ -22,6 +22,7 @@ Vagrant.configure(API_VERSION) do |config|
     salt.run_highstate = true
     salt.colorize = true
     salt.verbose = true
+    salt.log_level = 'warning'
   end
   config.vm.provider 'virtualbox' do |vb|
     vb.customize ['modifyvm', :id, '--memory', '1024']
