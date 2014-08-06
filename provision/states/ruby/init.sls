@@ -6,6 +6,6 @@ rvm:
     - addusers:
       - vagrant
 
-ruby-2.1.1:
+ruby-2.1:
   rvm.installed:
     - default: True

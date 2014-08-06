@@ -9,10 +9,7 @@ docker-repo:
     - keyserver: keyserver.ubuntu.com
 
 lxc-docker:
-  pkg:
-    - installed
-
-vagrant:
-  user.present:
-    - groups:
-      - docker
+  pkg.installed:
+    - refresh: True
+    - require:
+      - pkgrepo: docker-repo

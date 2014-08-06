@@ -14,5 +14,13 @@ compile:
   cmd.run:
     - name: ./all.bash
     - cwd: /usr/local/go/src
-    - watch:
+    - unless: test -d /usr/local/go/bin
+    - require:
       - archive: get-source
+
+set-env:
+  file.append:
+    - name: /etc/profile
+    - text: export PATH=/usr/local/go/bin:$PATH
+    - require:
+      - cmd: compile
