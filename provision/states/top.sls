@@ -2,5 +2,5 @@
 # vi: set ft=yaml :
 ---
 base:
-  jenkins:
-    - jenkins
+  '*':
+    - docker

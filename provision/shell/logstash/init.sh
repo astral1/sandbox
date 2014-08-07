@@ -16,4 +16,6 @@ output {
 }
 EOF
 
-wget https://download.elasticsearch.org/kibana/kibana/kibana-3.1.0.tar.gz
+curl -O https://download.elasticsearch.org/kibana/kibana/kibana-3.1.0.tar.gz
+tar zxvf kibana-3.1.0
+
