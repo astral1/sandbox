@@ -10,11 +10,11 @@ Vagrant.configure(API_VERSION) do |config|
   config.vm.synced_folder 'provision/states/', '/srv/salt/'
 
   config.vm.define :vbox1 do |v1|
-    config.vm.network 'private_network', ip: '172.16.33.10'
+    v1.vm.network 'private_network', ip: '172.16.33.10'
   end
 
   config.vm.define :vbox2 do |v2|
-    config.vm.network 'private_network', ip: '172.16.33.11'
+    v2.vm.network 'private_network', ip: '172.16.33.11'
   end
 
   config.vm.provision :salt do |salt|
