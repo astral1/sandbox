@@ -1,0 +1,16 @@
+--- graphite_influxdb.py  2014-08-11 19:18:00.000000000 -0700
++++ graphite_influxdb.py  2014-08-11 19:21:55.023259073 -0700
+@@ -275,7 +275,12 @@
+         with statsd.timer('service=graphite-api.action=cache_get_nodes.target_type=gauge.unit=ms'):
+             nodes = self.cache.get("influxdb_list_series")
+             if nodes is None:
+-                raise Exception("series not in cache. please run maintain_cache.py")
++                client, _ = config_to_client()
++                series = client.query('select * from /.*/ limit 1')
++                #series_list = [p[1] for p in series[0]['points']]
++                series_list = [p['name'] for p in series]
++                #raise Exception("series not in cache. please run maintain_cache.py")
++                nodes = series_list
+
+         # and then build the sublist of all matching ones
+         with statsd.timer('service=graphite-api.action=find_series.target_type=gauge.unit=ms'):

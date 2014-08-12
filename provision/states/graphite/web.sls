@@ -17,3 +17,14 @@ requirements:
     - require:
       - sls: lib.cairo
       - sls: python.develop
+
+create_config:
+  file.copy:
+    - name: /opt/graphite-web/webapp/graphite/local_settings.py
+    - source: /opt/graphite-web/webapp/graphite/local_settings.py.example
+    - require:
+      - git: source
+
+wsgi_server:
+  pip.installed:
+    - name: gunicorn
