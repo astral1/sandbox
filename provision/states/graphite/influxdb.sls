@@ -2,7 +2,6 @@
 # vi: ft=yaml:sw=2:ts=2:expandtab
 ---
 include:
-  - influxdb
   - pip
   - .web
 
