@@ -1,5 +1,5 @@
---- graphite_influxdb.py  2014-08-11 19:18:00.000000000 -0700
-+++ graphite_influxdb.py  2014-08-11 19:21:55.023259073 -0700
+--- graphite_influxdb.py        2014-08-12 19:53:40.692237162 -0700
++++ graphite_influxdb.py        2014-08-12 19:50:55.603055958 -0700
 @@ -275,7 +275,12 @@
          with statsd.timer('service=graphite-api.action=cache_get_nodes.target_type=gauge.unit=ms'):
              nodes = self.cache.get("influxdb_list_series")
@@ -14,3 +14,12 @@
 
          # and then build the sublist of all matching ones
          with statsd.timer('service=graphite-api.action=find_series.target_type=gauge.unit=ms'):
+@@ -291,7 +296,7 @@
+         # query.pattern is basically regex, though * should become [^\.]*
+         # and . \.
+         # but list series doesn't support pattern matching/regex yet
+-        regex = '^{0}$'.format(
++        regex = '^{0}\.'.format(
+             query.pattern.replace('.', '\.').replace('*', '[^\.]*')
+         )
+         logger.debug("searching for nodes", pattern=query.pattern, regex=regex)

@@ -11,11 +11,15 @@ graphite_influxdb:
     - require:
       - sls: graphite.web 
 
+pip_requirements:
+  pip.installed:
+    - requirements: salt://graphite/influxdb/requirements
+
 patch:
   file.patch:
     - name: /usr/local/lib/python2.7/dist-packages/graphite_influxdb.py
     - source: salt://graphite/influxdb/patch
-    - hash: sha1=1c848de7fcd438bfe981ba91a86ec2b460c24ed1
+    - hash: sha1=5b8320e93dd0a2831b2b3a6c5d83f8199586d3e5
     - require:
       - pip: graphite_influxdb
 
