@@ -15,7 +15,7 @@ Vagrant.configure(API_VERSION) do |config|
   end
 
   config.vm.define :vbox2 do |v2|
-    v2.vm.hostname = 'vbox1'
+    v2.vm.hostname = 'vbox2'
     v2.vm.network 'private_network', ip: '172.16.33.11'
   end
 
